@@ -2,6 +2,7 @@ import Foundation
 import UIKit
 
 final class ListHeroesView: UIView {
+    
     enum Constant {
         static let estimatedRowHeight: CGFloat = 120
     }
@@ -12,6 +13,7 @@ final class ListHeroesView: UIView {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = Constant.estimatedRowHeight
+        tableView.isScrollEnabled = true
         return tableView
     }()
     
@@ -41,4 +43,5 @@ final class ListHeroesView: UIView {
             heroesTableView.bottomAnchor.constraint(equalTo: bottomAnchor),
         ])
     }
+    
 }

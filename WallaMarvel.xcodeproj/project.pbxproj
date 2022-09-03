@@ -30,6 +30,19 @@
 		AF99BE8C8FC1DE4178D39965 /* Pods_WallaMarvel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27133A00A66EF91557A95FF4 /* Pods_WallaMarvel.framework */; };
 		B44173F44B16313EF24D8ED3 /* Pods_WallaMarvel_WallaMarvelUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9A318E79FD19C1EE3A972A3 /* Pods_WallaMarvel_WallaMarvelUITests.framework */; };
 		CEEB6D6D448C150745880569 /* Pods_WallaMarvelTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46D0BB56F90DDBDFBE6933F7 /* Pods_WallaMarvelTests.framework */; };
+		F71FB69B28C104B600C2CB24 /* DetailHeroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71FB69A28C104B600C2CB24 /* DetailHeroViewController.swift */; };
+		F71FB69D28C1051800C2CB24 /* DetailHeroPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71FB69C28C1051800C2CB24 /* DetailHeroPresenter.swift */; };
+		F71FB69F28C1054600C2CB24 /* DetailHeroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71FB69E28C1054600C2CB24 /* DetailHeroView.swift */; };
+		F71FB6A128C1057F00C2CB24 /* DetailHeroAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71FB6A028C1057F00C2CB24 /* DetailHeroAdapter.swift */; };
+		F71FB6A728C21A8000C2CB24 /* SeriesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71FB6A628C21A8000C2CB24 /* SeriesList.swift */; };
+		F71FB6AB28C21C3000C2CB24 /* SeriesSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71FB6AA28C21C3000C2CB24 /* SeriesSummary.swift */; };
+		F71FB6B028C2D01800C2CB24 /* UrlResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71FB6AF28C2D01800C2CB24 /* UrlResponse.swift */; };
+		F71FB6B228C2D0B300C2CB24 /* ComicList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71FB6B128C2D0B300C2CB24 /* ComicList.swift */; };
+		F71FB6B428C2D10F00C2CB24 /* ComicSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71FB6B328C2D10F00C2CB24 /* ComicSummary.swift */; };
+		F71FB6B628C2D1A600C2CB24 /* StoryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71FB6B528C2D1A600C2CB24 /* StoryList.swift */; };
+		F71FB6B828C2D1EE00C2CB24 /* StorySummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71FB6B728C2D1EE00C2CB24 /* StorySummary.swift */; };
+		F71FB6BA28C2D80700C2CB24 /* EventList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71FB6B928C2D80700C2CB24 /* EventList.swift */; };
+		F71FB6BC28C2D88400C2CB24 /* EventSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71FB6BB28C2D88400C2CB24 /* EventSummary.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +96,19 @@
 		B07DF4A661FBEFBDC6D96C2E /* Pods-WallaMarvelTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WallaMarvelTests.debug.xcconfig"; path = "Target Support Files/Pods-WallaMarvelTests/Pods-WallaMarvelTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B40C4BB3B0477474BE5C2C4E /* Pods-WallaMarvel.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WallaMarvel.release.xcconfig"; path = "Target Support Files/Pods-WallaMarvel/Pods-WallaMarvel.release.xcconfig"; sourceTree = "<group>"; };
 		D9A318E79FD19C1EE3A972A3 /* Pods_WallaMarvel_WallaMarvelUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WallaMarvel_WallaMarvelUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F71FB69A28C104B600C2CB24 /* DetailHeroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHeroViewController.swift; sourceTree = "<group>"; };
+		F71FB69C28C1051800C2CB24 /* DetailHeroPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHeroPresenter.swift; sourceTree = "<group>"; };
+		F71FB69E28C1054600C2CB24 /* DetailHeroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHeroView.swift; sourceTree = "<group>"; };
+		F71FB6A028C1057F00C2CB24 /* DetailHeroAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHeroAdapter.swift; sourceTree = "<group>"; };
+		F71FB6A628C21A8000C2CB24 /* SeriesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesList.swift; sourceTree = "<group>"; };
+		F71FB6AA28C21C3000C2CB24 /* SeriesSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesSummary.swift; sourceTree = "<group>"; };
+		F71FB6AF28C2D01800C2CB24 /* UrlResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlResponse.swift; sourceTree = "<group>"; };
+		F71FB6B128C2D0B300C2CB24 /* ComicList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicList.swift; sourceTree = "<group>"; };
+		F71FB6B328C2D10F00C2CB24 /* ComicSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicSummary.swift; sourceTree = "<group>"; };
+		F71FB6B528C2D1A600C2CB24 /* StoryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryList.swift; sourceTree = "<group>"; };
+		F71FB6B728C2D1EE00C2CB24 /* StorySummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorySummary.swift; sourceTree = "<group>"; };
+		F71FB6B928C2D80700C2CB24 /* EventList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventList.swift; sourceTree = "<group>"; };
+		F71FB6BB28C2D88400C2CB24 /* EventSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventSummary.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,7 +177,7 @@
 				1A0E3A982862F7E200132FCB /* AppDelegate.swift */,
 				1A0E3A9A2862F7E200132FCB /* SceneDelegate.swift */,
 				1A821EC42862FD470024D397 /* List Heroes */,
-				1A821EC52862FD500024D397 /* Detail Heroe */,
+				1A821EC52862FD500024D397 /* Detail Hero */,
 				1A821EC62862FD650024D397 /* Domain */,
 				1A821EC72862FD6E0024D397 /* Data */,
 				1A0E3AA12862F7E300132FCB /* Assets.xcassets */,
@@ -190,11 +216,15 @@
 			path = "List Heroes";
 			sourceTree = "<group>";
 		};
-		1A821EC52862FD500024D397 /* Detail Heroe */ = {
+		1A821EC52862FD500024D397 /* Detail Hero */ = {
 			isa = PBXGroup;
 			children = (
+				F71FB69A28C104B600C2CB24 /* DetailHeroViewController.swift */,
+				F71FB69C28C1051800C2CB24 /* DetailHeroPresenter.swift */,
+				F71FB69E28C1054600C2CB24 /* DetailHeroView.swift */,
+				F71FB6A028C1057F00C2CB24 /* DetailHeroAdapter.swift */,
 			);
-			path = "Detail Heroe";
+			path = "Detail Hero";
 			sourceTree = "<group>";
 		};
 		1A821EC62862FD650024D397 /* Domain */ = {
@@ -231,6 +261,15 @@
 				1A821ED3286302EC0024D397 /* CharacterResponseDataModel.swift */,
 				1A7B9BBC286D81AA00EBC1A6 /* CharacterDataModel.swift */,
 				1A7B9BBE286D81B600EBC1A6 /* Thumbnail.swift */,
+				F71FB6B528C2D1A600C2CB24 /* StoryList.swift */,
+				F71FB6B728C2D1EE00C2CB24 /* StorySummary.swift */,
+				F71FB6A628C21A8000C2CB24 /* SeriesList.swift */,
+				F71FB6AA28C21C3000C2CB24 /* SeriesSummary.swift */,
+				F71FB6B328C2D10F00C2CB24 /* ComicSummary.swift */,
+				F71FB6B128C2D0B300C2CB24 /* ComicList.swift */,
+				F71FB6AF28C2D01800C2CB24 /* UrlResponse.swift */,
+				F71FB6B928C2D80700C2CB24 /* EventList.swift */,
+				F71FB6BB28C2D88400C2CB24 /* EventSummary.swift */,
 			);
 			path = DataModel;
 			sourceTree = "<group>";
@@ -496,18 +535,31 @@
 			files = (
 				1A821ED82863081A0024D397 /* MarvelRepository.swift in Sources */,
 				1A0E3A9D2862F7E200132FCB /* ListHeroesViewController.swift in Sources */,
+				F71FB6A728C21A8000C2CB24 /* SeriesList.swift in Sources */,
+				F71FB69D28C1051800C2CB24 /* DetailHeroPresenter.swift in Sources */,
 				1AC0347F2863214900E93178 /* GetHeroes.swift in Sources */,
 				1A7B9BBD286D81AA00EBC1A6 /* CharacterDataModel.swift in Sources */,
+				F71FB6AB28C21C3000C2CB24 /* SeriesSummary.swift in Sources */,
+				F71FB69F28C1054600C2CB24 /* DetailHeroView.swift in Sources */,
 				1A0E3A992862F7E200132FCB /* AppDelegate.swift in Sources */,
+				F71FB6BA28C2D80700C2CB24 /* EventList.swift in Sources */,
 				1A821ECC2862FF990024D397 /* String+MD5.swift in Sources */,
 				1A821ED6286305590024D397 /* MarvelDataSource.swift in Sources */,
 				1A3B732A286AE195007BF626 /* ListHeroesAdapter.swift in Sources */,
+				F71FB6BC28C2D88400C2CB24 /* EventSummary.swift in Sources */,
 				1A7B9BBF286D81B600EBC1A6 /* Thumbnail.swift in Sources */,
+				F71FB6B228C2D0B300C2CB24 /* ComicList.swift in Sources */,
 				1A821EDA2863096C0024D397 /* ListHeroesPresenter.swift in Sources */,
+				F71FB6B028C2D01800C2CB24 /* UrlResponse.swift in Sources */,
+				F71FB69B28C104B600C2CB24 /* DetailHeroViewController.swift in Sources */,
 				1A0E3A9B2862F7E200132FCB /* SceneDelegate.swift in Sources */,
 				1A3B7326286ADD1E007BF626 /* ListHeroesTableView.swift in Sources */,
+				F71FB6B628C2D1A600C2CB24 /* StoryList.swift in Sources */,
+				F71FB6B828C2D1EE00C2CB24 /* StorySummary.swift in Sources */,
+				F71FB6A128C1057F00C2CB24 /* DetailHeroAdapter.swift in Sources */,
 				1A3B7328286ADEE6007BF626 /* ListHeroesTableViewCell.swift in Sources */,
 				1A821ED4286302EC0024D397 /* CharacterResponseDataModel.swift in Sources */,
+				F71FB6B428C2D10F00C2CB24 /* ComicSummary.swift in Sources */,
 				1A821EC92862FE3C0024D397 /* APIClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -678,6 +730,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = TXZ928737V;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WallaMarvel/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -706,6 +759,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = TXZ928737V;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WallaMarvel/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

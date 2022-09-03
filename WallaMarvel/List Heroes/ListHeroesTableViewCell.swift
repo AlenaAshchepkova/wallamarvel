@@ -3,6 +3,7 @@ import UIKit
 import Kingfisher
 
 final class ListHeroesTableViewCell: UITableViewCell {
+    
     private let heroeImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -49,7 +50,13 @@ final class ListHeroesTableViewCell: UITableViewCell {
     }
     
     func configure(model: CharacterDataModel) {
-        heroeImageView.kf.setImage(with: URL(string: model.thumbnail.path + "/portrait_small." + model.thumbnail.extension))
+        
+        guard let thumbnail = model.thumbnail else {
+            return
+        }
+        
+        heroeImageView.kf.setImage(with: URL(string: thumbnail.path + "/portrait_small." + thumbnail.extension))
         heroeName.text = model.name
     }
+    
 }

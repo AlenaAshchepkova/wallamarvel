@@ -1,8 +1,10 @@
 import Foundation
 import UIKit
 
+
 final class ListHeroesAdapter: NSObject, UITableViewDataSource {
-    var heroes: [CharacterDataModel] {
+    
+    var heroes: [CharacterDataModel]? {
         didSet {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
@@ -20,15 +22,20 @@ final class ListHeroesAdapter: NSObject, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        heroes.count
+        return heroes?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ListHeroesTableViewCell", for: indexPath) as! ListHeroesTableViewCell
         
+        guard let heroes = heroes else {
+            return cell
+        }
+
         let model = heroes[indexPath.row]
         cell.configure(model: model)
         
         return cell
     }
+    
 }
