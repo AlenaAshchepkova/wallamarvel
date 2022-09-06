@@ -24,6 +24,16 @@ final class APIClient: APIClientProtocol {
     
     init() { }
     
+    func createRequest(url: URL, completionBlock: @escaping (CharacterDataContainer) -> Void) {
+        
+        let urlRequest = URLRequest(url: url)
+        
+        URLSession.shared.dataTask(with: urlRequest) { data, response, error in
+            let dataModel = try! JSONDecoder().decode(CharacterDataContainer.self, from: data!)
+            completionBlock(dataModel)
+        }.resume()
+    }
+    
     func getHeroes(limit: Int?, offset: Int?, searchString: String?, completionBlock: @escaping (CharacterDataContainer) -> Void) {
         
         var urlComponent = URLComponents(string: Constant.API_PATH + Constant.characterListPath)
@@ -33,12 +43,7 @@ final class APIClient: APIClientProtocol {
             URLQueryItem(name: key, value: value)
         }
         
-        let urlRequest = URLRequest(url: urlComponent!.url!)
-        
-        URLSession.shared.dataTask(with: urlRequest) { data, response, error in
-            let dataModel = try! JSONDecoder().decode(CharacterDataContainer.self, from: data!)
-            completionBlock(dataModel)
-        }.resume()
+        createRequest(url: urlComponent!.url!, completionBlock: completionBlock)
     }
     
     func getHeroDetail(heroID: String, completionBlock: @escaping (CharacterDataContainer) -> Void) {
@@ -48,14 +53,8 @@ final class APIClient: APIClientProtocol {
                                                        searchString: nil).map { (key, value) in
             URLQueryItem(name: key, value: value)
         }
-        
-        let urlRequest = URLRequest(url: urlComponent!.url!)
-        
-        URLSession.shared.dataTask(with: urlRequest) { data, response, error in
-            let dataModel = try! JSONDecoder().decode(CharacterDataContainer.self, from: data!)
-            completionBlock(dataModel)
-        }.resume()
-        
+
+        createRequest(url: urlComponent!.url!, completionBlock: completionBlock)
     }
     
     func getCommonParameters(limit: Int?, offset: Int?, searchString: String?) -> [String: String] {
