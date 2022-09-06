@@ -180,6 +180,7 @@
 				1A821EC52862FD500024D397 /* Detail Hero */,
 				1A821EC62862FD650024D397 /* Domain */,
 				1A821EC72862FD6E0024D397 /* Data */,
+				F7DCD0A628C7F8C200A1748C /* Network */,
 				1A0E3AA12862F7E300132FCB /* Assets.xcassets */,
 				1A0E3AA32862F7E300132FCB /* LaunchScreen.storyboard */,
 				1A0E3AA62862F7E300132FCB /* Info.plist */,
@@ -293,6 +294,14 @@
 				13A59ED8A989613D98398757 /* Pods-WallaMarvelTests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		F7DCD0A628C7F8C200A1748C /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				1A821EC82862FE3C0024D397 /* APIClient.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

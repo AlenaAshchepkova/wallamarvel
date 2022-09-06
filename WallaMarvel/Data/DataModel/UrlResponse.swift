@@ -1,5 +1,5 @@
 //
-//  Uri.swift
+//  UrlResponse.swift
 //  WallaMarvel
 //
 //  Created by Alena's macbook on 03.09.2022.
