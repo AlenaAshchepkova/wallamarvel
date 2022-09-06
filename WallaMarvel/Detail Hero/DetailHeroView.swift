@@ -73,7 +73,6 @@ final class DetailHeroView: UIView {
     
     private let mainInfoStackView: UIStackView = {
         let stackView = UIStackView()
-        stackView.backgroundColor = .cyan
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
