@@ -11,18 +11,35 @@ final class ListHeroesViewController: UIViewController, UISearchResultsUpdating 
     var presenter: ListHeroesPresenterProtocol?
     var listHeroesProvider: ListHeroesAdapter?
     var searchController: UISearchController!
-    var filterString: String? = nil
-    
+    var filterString: String? = nil {
+        willSet(newValue) {
+            if newValue == nil {
+                presenter?.deleteSearchData()
+                presenter?.reloadHeroes()
+                
+            } else {
+                
+                if let filter = filterString {
+                    if filter.elementsEqual(newValue!) {
+                        presenter?.getHeroesByName(searchString: newValue!)
+                        return
+                    }
+                }
+                presenter?.deleteSearchData()
+                presenter?.getHeroesByName(searchString: newValue!)
+            }
+        }
+    }
+
     override func loadView() {
         view = ListHeroesView()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        listHeroesProvider = ListHeroesAdapter(tableView: mainView.heroesTableView)
-        presenter?.getNextHeroes()
         presenter?.ui = self
-        
+        listHeroesProvider = ListHeroesAdapter(tableView: mainView.heroesTableView)
+
         title = presenter?.screenTitle()
         
         mainView.heroesTableView.delegate = self
@@ -38,21 +55,14 @@ final class ListHeroesViewController: UIViewController, UISearchResultsUpdating 
 
 extension ListHeroesViewController: ListHeroesUI {
     
-    func update(heroes: [CharacterDataModel]?, shouldDeletePrevious: Bool) {
+    func update(heroes: [CharacterDataModel]?) {
     
         guard let newArray = heroes else {
-            if shouldDeletePrevious {
-                listHeroesProvider?.heroes = []
-            }
+            listHeroesProvider?.heroes = []
             return
         }
         
-        if shouldDeletePrevious {
-            listHeroesProvider?.heroes! = newArray
-            
-        } else {
-            listHeroesProvider?.heroes! += newArray
-        }
+        listHeroesProvider?.heroes! = newArray
         
     }
     
@@ -77,9 +87,13 @@ extension ListHeroesViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.row == tableView.numberOfRows(inSection: Constant.sectionIndex) - 1
-            && filterString == nil {
-            presenter?.getNextHeroes()
+        if indexPath.row == tableView.numberOfRows(inSection: Constant.sectionIndex) - 1 {
+            guard let filter = filterString, !filter.isEmpty else {
+                presenter?.loadNextHeroes()
+                return
+            }
+ 
+            presenter?.getHeroesByName(searchString: filter)
         }
     }
     
@@ -90,17 +104,17 @@ extension ListHeroesViewController {
     func updateSearchResults(for searchController: UISearchController) {
 
         if !searchController.isActive {
+            presenter?.deleteSearchData()
+            presenter?.reloadHeroes()
             return
         }
 
         if let searchString = searchController.searchBar.text, !searchString.isEmpty {
-            filterString = searchController.searchBar.text
+            filterString = searchString
+            
         } else {
             filterString = nil
         }
-        
-        presenter?.getHeroesByName(searchString: filterString)
-        
     }
     
 }

@@ -4,58 +4,73 @@ protocol ListHeroesPresenterProtocol: AnyObject {
     
     var ui: ListHeroesUI? { get set }
     func screenTitle() -> String
-    func getNextHeroes()
-    func getHeroesByName(searchString: String?)
+    func loadNextHeroes()
+    func getHeroesByName(searchString: String)
+    func deleteSearchData()
+    func reloadHeroes()
     
 }
 
 protocol ListHeroesUI: AnyObject {
     
-    func update(heroes: [CharacterDataModel]?, shouldDeletePrevious: Bool)
+    func update(heroes: [CharacterDataModel]?)
     
 }
 
 final class ListHeroesPresenter: ListHeroesPresenterProtocol {
- 
-    enum Constant {
-        static let limit: Int = 30
-    }
-    
+
     var ui: ListHeroesUI?
-    private var limit: Int = Constant.limit
-    private var offset: Int = 0
     private var isLoadingInProgress: Bool = false
-    
+    private var isFullyLoadedSearch: Bool = false
+    private var isFullyLoadedList: Bool = false
     private let getHeroesUseCase: GetHeroesUseCaseProtocol
     
     init(getHeroesUseCase: GetHeroesUseCaseProtocol = GetHeroes()) {
         self.getHeroesUseCase = getHeroesUseCase
+        let heroes = self.getHeroesUseCase.getAllHeroes()
+        if heroes.count <= 0 {
+            loadNextHeroes()
+            
+        } else {
+            self.ui?.update(heroes: heroes)
+        }
     }
     
     func screenTitle() -> String {
         "Heroes"
     }
     
-    func getNextHeroes() {
-        if !isLoadingInProgress {
+    func reloadHeroes() {
+        let heroes = self.getHeroesUseCase.getAllHeroes()
+        self.ui?.update(heroes: heroes)
+    }
+    
+    func loadNextHeroes() {
+        if !isLoadingInProgress && !isFullyLoadedList {
             isLoadingInProgress = true
-            getHeroesUseCase.execute(limit: limit, offset: offset, searchString: nil, completionBlock: { characterDataContainer in
-                self.offset += self.limit
-                self.isLoadingInProgress = false
-                self.ui?.update(heroes: characterDataContainer.characters, shouldDeletePrevious: false)
+            getHeroesUseCase.loadNextHeroes(completionBlock: { [weak self] isFullyLoaded in
+                self?.isFullyLoadedList = isFullyLoaded
+                self?.isLoadingInProgress = false
+                self?.ui?.update(heroes: self?.getHeroesUseCase.getAllHeroes())
+            })
+        }
+    }
+
+    func getHeroesByName(searchString: String) {
+        // TODO: change logic for stopping previous request
+        if !isLoadingInProgress && !isFullyLoadedSearch {
+            isLoadingInProgress = true
+            getHeroesUseCase.searchByName(searchString: searchString, completionBlock: { [weak self] isFullyLoaded in
+                self?.isFullyLoadedSearch = isFullyLoaded
+                self?.isLoadingInProgress = false
+                self?.ui?.update(heroes: self?.getHeroesUseCase.getHeroesBySearchString())
             })
         }
     }
     
-    func getHeroesByName(searchString: String?) {
-        if !isLoadingInProgress {
-            isLoadingInProgress = true
-            getHeroesUseCase.execute(limit: nil, offset: nil, searchString: searchString,
-                                     completionBlock: { characterDataContainer in
-                self.isLoadingInProgress = false
-                self.ui?.update(heroes: characterDataContainer.characters, shouldDeletePrevious: true)
-            })
-        }
+    func deleteSearchData() {
+        isFullyLoadedSearch = false
+        getHeroesUseCase.deleteSearchData()
     }
     
 }

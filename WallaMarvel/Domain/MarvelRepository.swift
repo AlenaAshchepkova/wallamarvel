@@ -3,11 +3,12 @@ import Foundation
 
 protocol MarvelRepositoryProtocol {
     
-    func getHeroes(limit: Int?, offset: Int?, searchString: String?,
-                   completionBlock: @escaping (CharacterDataContainer) -> Void)
-    
-    func getHeroDetails(heroID: String, completionBlock: @escaping (CharacterDataContainer) -> Void)
-    
+    func getAllHeroes() -> [CharacterDataModel]
+    func getHeroesBySearchString() -> [CharacterDataModel]
+    func loadNextHeroes(completionBlock: @escaping (Bool) -> Void)
+    func getHeroDetails(heroID: String, completionBlock: @escaping (CharacterDataModel?) -> Void)
+    func searchHeroes(searchString: String, completionBlock: @escaping (Bool) -> Void)
+    func deleteSearchData()
 }
 
 final class MarvelRepository: MarvelRepositoryProtocol {
@@ -18,14 +19,28 @@ final class MarvelRepository: MarvelRepositoryProtocol {
         self.dataSource = dataSource
     }
     
-    func getHeroes(limit: Int?, offset: Int?, searchString: String?, completionBlock: @escaping (CharacterDataContainer) -> Void) {
-        
-        dataSource.getHeroes(limit: limit, offset: offset, searchString: searchString,
-                             completionBlock: completionBlock)
+    func getAllHeroes() -> [CharacterDataModel] {
+        return dataSource.getAllHeroes()
     }
     
-    func getHeroDetails(heroID: String, completionBlock: @escaping (CharacterDataContainer) -> Void) {
+    func getHeroesBySearchString() -> [CharacterDataModel] {
+        return dataSource.getHeroesBySearchString()
+    }
+    
+    func loadNextHeroes(completionBlock: @escaping (Bool) -> Void) {
+        dataSource.loadNextHeroes(completionBlock: completionBlock)
+    }
+    
+    func getHeroDetails(heroID: String, completionBlock: @escaping (CharacterDataModel?) -> Void) {
         dataSource.getHeroDetails(heroID: heroID, completionBlock: completionBlock)
+    }
+    
+    func searchHeroes(searchString: String, completionBlock: @escaping (Bool) -> Void) {
+        dataSource.searchHeroes(searchString: searchString, completionBlock: completionBlock)
+    }
+    
+    func deleteSearchData() {
+        dataSource.deleteSearchData()
     }
     
 }

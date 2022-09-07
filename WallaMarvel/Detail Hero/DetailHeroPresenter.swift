@@ -31,13 +31,12 @@ final class DetailsHeroPresenter: DetailsHeroPresenterProtocol {
     }
     
     func getHeroDetails(heroID: String) {
-        getHeroesUseCase.loadDetails(heroID: heroID, completionBlock: { characterDataContainer in
+        getHeroesUseCase.loadDetails(heroID: heroID, completionBlock: { characterDataModel in
             
-            guard let heroInfo = characterDataContainer.characters?.first else {
+            guard let model = characterDataModel else {
                 return
             }
-            
-            self.ui?.update(hero: heroInfo)
+            self.ui?.update(hero: model)
         })
     }
     

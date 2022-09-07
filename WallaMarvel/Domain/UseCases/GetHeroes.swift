@@ -3,9 +3,12 @@ import Foundation
 
 protocol GetHeroesUseCaseProtocol {
     
-    func execute(limit: Int?, offset: Int?, searchString: String?, completionBlock: @escaping (CharacterDataContainer) -> Void)
-    func loadDetails(heroID: String, completionBlock: @escaping (CharacterDataContainer) -> Void)
-    
+    func getAllHeroes() -> [CharacterDataModel]
+    func getHeroesBySearchString() -> [CharacterDataModel]
+    func loadNextHeroes(completionBlock: @escaping (Bool) -> Void)
+    func loadDetails(heroID: String, completionBlock: @escaping (CharacterDataModel?) -> Void)
+    func searchByName(searchString: String, completionBlock: @escaping (Bool) -> Void)
+    func deleteSearchData()
 }
 
 struct GetHeroes: GetHeroesUseCaseProtocol {
@@ -15,13 +18,28 @@ struct GetHeroes: GetHeroesUseCaseProtocol {
         self.repository = repository
     }
     
-    func execute(limit: Int?, offset: Int?, searchString: String?, completionBlock: @escaping (CharacterDataContainer) -> Void) {
-        
-        repository.getHeroes(limit: limit, offset: offset, searchString: searchString, completionBlock: completionBlock)
+    func getAllHeroes() -> [CharacterDataModel] {
+        return repository.getAllHeroes()
     }
     
-    func loadDetails(heroID: String, completionBlock: @escaping (CharacterDataContainer) -> Void) {
+    func getHeroesBySearchString() -> [CharacterDataModel] {
+        return repository.getHeroesBySearchString()
+    }
+    
+    func loadNextHeroes(completionBlock: @escaping (Bool) -> Void) {
+        repository.loadNextHeroes(completionBlock: completionBlock)
+    }
+    
+    func loadDetails(heroID: String, completionBlock: @escaping (CharacterDataModel?) -> Void) {
         repository.getHeroDetails(heroID: heroID, completionBlock: completionBlock)
     }
 
+    func searchByName(searchString: String, completionBlock: @escaping (Bool) -> Void) {
+        repository.searchHeroes(searchString: searchString, completionBlock: completionBlock)
+    }
+    
+    func deleteSearchData() {
+        repository.deleteSearchData()
+    }
+    
 }

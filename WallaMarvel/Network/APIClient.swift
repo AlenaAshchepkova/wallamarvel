@@ -2,8 +2,9 @@ import Foundation
 
 protocol APIClientProtocol {
     
-    func getHeroes(limit: Int?, offset: Int?, searchString: String?, completionBlock: @escaping (CharacterDataContainer) -> Void)
-    func getHeroDetail(heroID: String, completionBlock: @escaping (CharacterDataContainer) -> Void)
+    func getHeroes(offset: Int, completionBlock: @escaping (NetworkResult) -> Void)
+    func getHeroDetail(heroID: String, completionBlock: @escaping (NetworkResult) -> Void)
+    func searchHeroes(offset: Int, searchString: String, completionBlock: @escaping (NetworkResult) -> Void)
     
 }
 
@@ -28,31 +29,39 @@ final class APIClient: APIClientProtocol {
         static let orderByNameValue = "name"
     }
     
+    enum Constant {
+        static let limit: Int = 30
+    }
+    
     init() { }
     
-    func createRequest(url: URL, completionBlock: @escaping (CharacterDataContainer) -> Void) {
+    func createRequest(url: URL, completionBlock: @escaping (NetworkResult) -> Void) {
         
         let urlRequest = URLRequest(url: url)
         
         URLSession.shared.dataTask(with: urlRequest) { data, response, error in
-            let dataModel = try! JSONDecoder().decode(CharacterDataContainer.self, from: data!)
-            completionBlock(dataModel)
+            if error != nil {
+                completionBlock(.failure(error))
+                return
+            }
+            
+            completionBlock(.success(data!))
+            
         }.resume()
     }
-    
-    func getHeroes(limit: Int?, offset: Int?, searchString: String?, completionBlock: @escaping (CharacterDataContainer) -> Void) {
+
+    func getHeroes(offset: Int, completionBlock: @escaping (NetworkResult) -> Void) {
         
         var urlComponent = URLComponents(string: MethodsConstant.API_PATH + MethodsConstant.characterListPath)
-        urlComponent?.queryItems = getCommonParameters(limit: limit,
-                                                       offset: offset,
-                                                       searchString: searchString).map { (key, value) in
+        urlComponent?.queryItems = getCommonParameters(limit: Constant.limit,
+                                                       offset: offset).map { (key, value) in
             URLQueryItem(name: key, value: value)
         }
         
         createRequest(url: urlComponent!.url!, completionBlock: completionBlock)
     }
     
-    func getHeroDetail(heroID: String, completionBlock: @escaping (CharacterDataContainer) -> Void) {
+    func getHeroDetail(heroID: String, completionBlock: @escaping (NetworkResult) -> Void) {
         var urlComponent = URLComponents(string: MethodsConstant.API_PATH + MethodsConstant.characterPath + heroID)
         urlComponent?.queryItems = getCommonParameters(limit: nil,
                                                        offset: nil,
@@ -63,7 +72,23 @@ final class APIClient: APIClientProtocol {
         createRequest(url: urlComponent!.url!, completionBlock: completionBlock)
     }
     
-    func getCommonParameters(limit: Int?, offset: Int?, searchString: String?) -> [String: String] {
+    func searchHeroes(offset: Int,
+                      searchString: String,
+                      completionBlock: @escaping (NetworkResult) -> Void) {
+
+        var urlComponent = URLComponents(string: MethodsConstant.API_PATH + MethodsConstant.characterListPath)
+        urlComponent?.queryItems = getCommonParameters(limit: Constant.limit,
+                                                       offset: offset,
+                                                       searchString: searchString).map { (key, value) in
+            URLQueryItem(name: key, value: value)
+        }
+        
+        createRequest(url: urlComponent!.url!, completionBlock: completionBlock)
+    }
+    
+    func getCommonParameters(limit: Int? = nil,
+                             offset: Int? = nil,
+                             searchString: String? = nil) -> [String: String] {
         let ts = String(Int(Date().timeIntervalSince1970))
         let privateKey = KeysConstants.privateKey
         let publicKey = KeysConstants.publicKey

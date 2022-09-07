@@ -43,6 +43,7 @@
 		F71FB6B828C2D1EE00C2CB24 /* StorySummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71FB6B728C2D1EE00C2CB24 /* StorySummary.swift */; };
 		F71FB6BA28C2D80700C2CB24 /* EventList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71FB6B928C2D80700C2CB24 /* EventList.swift */; };
 		F71FB6BC28C2D88400C2CB24 /* EventSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71FB6BB28C2D88400C2CB24 /* EventSummary.swift */; };
+		F7DCD0A828C7FCCD00A1748C /* NetworkResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7DCD0A728C7FCCD00A1748C /* NetworkResult.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,6 +110,7 @@
 		F71FB6B728C2D1EE00C2CB24 /* StorySummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorySummary.swift; sourceTree = "<group>"; };
 		F71FB6B928C2D80700C2CB24 /* EventList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventList.swift; sourceTree = "<group>"; };
 		F71FB6BB28C2D88400C2CB24 /* EventSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventSummary.swift; sourceTree = "<group>"; };
+		F7DCD0A728C7FCCD00A1748C /* NetworkResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResult.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -241,7 +243,6 @@
 			isa = PBXGroup;
 			children = (
 				1A821ED5286305590024D397 /* MarvelDataSource.swift */,
-				1A821EC82862FE3C0024D397 /* APIClient.swift */,
 				1A821ED2286302D40024D397 /* DataModel */,
 				1A821ECA2862FF910024D397 /* Helpers */,
 			);
@@ -300,6 +301,7 @@
 			isa = PBXGroup;
 			children = (
 				1A821EC82862FE3C0024D397 /* APIClient.swift */,
+				F7DCD0A728C7FCCD00A1748C /* NetworkResult.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -563,6 +565,7 @@
 				F71FB69B28C104B600C2CB24 /* DetailHeroViewController.swift in Sources */,
 				1A0E3A9B2862F7E200132FCB /* SceneDelegate.swift in Sources */,
 				1A3B7326286ADD1E007BF626 /* ListHeroesTableView.swift in Sources */,
+				F7DCD0A828C7FCCD00A1748C /* NetworkResult.swift in Sources */,
 				F71FB6B628C2D1A600C2CB24 /* StoryList.swift in Sources */,
 				F71FB6B828C2D1EE00C2CB24 /* StorySummary.swift in Sources */,
 				F71FB6A128C1057F00C2CB24 /* DetailHeroAdapter.swift in Sources */,
